@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraint-mappings
+    xmlns="http://jboss.org/xml/ns/javax/validation/mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jboss.org/xml/ns/javax/validation/mapping/validation-mapping-1.1.xsd"
+    version="1.1">
+  <bean class="ru.miit.lab4validate.TrainXML" ignore-annotations="false">
+    <field name="id">
+      <constraint annotation="javax.validation.constraints.Min">
+        <message>Значение идентификатора должно быть > 0</message>
+        <element name="value">1</element>
+      </constraint>
+    </field>
+    <field name="name">
+      <constraint annotation="javax.validation.constraints.NotNull">
+        <message>Название поезда должно быть задано</message>
+      </constraint>
+      <constraint annotation="javax.validation.constraints.Size">
+        <message>Количество символов должно быть от 3 до 255</message>
+        <element name="min">3</element>
+        <element name="max">255</element>
+      </constraint>
+      <constraint annotation="javax.validation.constraints.Pattern">
+        <message>Название должно быть с большой буквы</message>
+        <element name="regexp">^[A-Z].*</element>
+      </constraint>
+    </field>
+    <field name="horsePower">
+      <constraint annotation="javax.validation.constraints.Min">
+        <message>Значение не может быть отрицательным</message>
+        <element name="value">0</element>
+      </constraint>
+    </field>
+    <field name="maxSpeed">
+      <constraint annotation="javax.validation.constraints.Min">
+        <message>Значение не может быть отрицательным</message>
+        <element name="value">0</element>
+      </constraint>
+    </field>
+    <field name="maxDistance">
+      <constraint annotation="javax.validation.constraints.Min">
+        <message>Значение не может быть отрицательным</message>
+        <element name="value">0</element>
+      </constraint>
+    </field>
+    <field name="crewCount">
+      <constraint annotation="org.hibernate.validator.constraints.Range">
+        <message>Количество членов экипажа должно быть от 1 до 6</message>
+        <element name="min">1</element>
+        <element name="max">6</element>
+      </constraint>
+    </field>
+  </bean>
+</constraint-mappings>
+
